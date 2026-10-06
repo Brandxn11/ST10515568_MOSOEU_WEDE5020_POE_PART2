@@ -1,0 +1,247 @@
+/* ==========================================================================
+   1. GLOBAL SYSTEM SETUP & VARIABLE RESET (Mobile-First Layout Default)
+   ========================================================================== */
+:root {
+    --bg-dark: #1A1A1A;       /* Deep Charcoal Workspace Background */
+    --text-light: #F5F5F0;    /* Off-White High-Readability Body Copy */
+    --accent-red: #B91C1C;    /* JDM Racing Red Action Anchor Color */
+    --accent-hover: #991B1B;  /* Deeper Crimson for Hover Inputs */
+    --card-bg: #262626;       /* Soft Inner-Card Dark-Gray Texture Layer */
+    
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Base resets to normalize sizing anomalies across safari/chrome engines */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    padding-top: 140px; /* Leaves clear breathing space for sticky navigation */
+}
+
+/* Structural Header & Body Copy Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+}
+
+p {
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   2. FIXED STICKY NAVIGATION STACK (Mobile Layout Default)
+   ========================================================================== */
+.main-header {
+    position: fixed; /* Locks top menu elements explicitly in focus */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(26, 26, 26, 0.95);
+    border-bottom: 2px solid var(--accent-red);
+    backdrop-filter: blur(5px);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column; /* Vertical navigation structure matches phone views */
+    align-items: center;
+    padding: 1rem;
+    gap: 0.75rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-red);
+}
+
+/* ==========================================================================
+   3. HIGH-UTILITY INTERACTIVE HOVER ACTIONS (Call-To-Actions)
+   ========================================================================== */
+.btn-enquire, .btn-card-action {
+    display: inline-block;
+    background-color: var(--accent-red);
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn-enquire:hover, .btn-card-action:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px); /* Gives interactive lift feedback */
+}
+
+/* ==========================================================================
+   4. SINGLE-COLUMN MOBILE GRID CONTAINER & CARDS
+   ========================================================================== */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Enforces clear 1-column responsive layout structures across handheld device modes */
+.products-grid, .info-grid, .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Display Cards styling */
+.vehicle-card, .info-card, .gallery-item {
+    background-color: var(--card-bg);
+    border: 1px solid #333333;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 1.25rem;
+    transition: border-color 0.3s ease;
+}
+
+.vehicle-card:hover, .info-card:hover, .gallery-item:hover {
+    border-color: var(--accent-red);
+}
+
+.vehicle-image, .responsive-img {
+    width: 100%; /* Scales fluidly with relative percentage values */
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.card-content {
+    margin-top: 1rem;
+}
+
+.vehicle-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-price {
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Extra formatting spacing corrections */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333333;
+    border-radius: 4px;
+}
+
+.main-footer {
+    background-color: #111111;
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #222222;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE MEDIA BREAKPOINTS (Laptops & Desktop Multi-Columns)
+   ========================================================================== */
+@media screen and (min-width: 768px) {
+    
+    body {
+        padding-top: 80px; /* Reduces body offset padding as navbar shrinks flat */
+    }
+
+    /* Straightens structural link list row items flat across monitors */
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 2rem;
+    }
+    
+    /* Expands content columns seamlessly from vertical stacks to grid structures */
+    .products-grid, .gallery-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Cars row side-by-side format */
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr); /* Split screen data panel formatting */
+    }
+
+    /* Hero section layouts scaling adjustments for full desktop view displays */
+    .hero-section {
+        text-align: center;
+        padding: 3rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-text {
+        max-width: 700px;
+        margin: 0 auto 2rem auto;
+        font-size: 1.2rem;
+    }
+}
